@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <!-- Mirrored from listee.dreamguystech.com/html/listing-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:14:17 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>Listee | Template</title>
+
+    <link rel="shortcut icon" href="{% static 'lendapp/assets/img/favicon.png' %}" />
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/all.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/aos/aos.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/feather.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/style.css' %}" />
+  </head>
+  <body>
+    <div class="main-wrapper innerpagebg">
+        {% include 'lendapp/header.html' %}
+
+
+      <div class="breadcrumb-bar">
+        <div class="container">
+          <div class="row align-items-center text-center">
+            <div class="col-md-12 col-12">
+              <h2 class="breadcrumb-title">Search Result</h2>
+              <nav aria-label="breadcrumb" class="page-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index-2.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Grid</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-content">
+        <div class="container">
+          <div class="bookmarks-content grid-view featured-slider">
+            <div class="row">
+                {% for item in items %}
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="blog-widget">
+                      <div class="blog-img">
+                        <a href="{% url 'post-detail-page' item.id %}">
+                          <img src="{{item.product_image.all.0.image.url}}" class="img-fluid" alt="blog-img">
+                        </a>
+                        <div class="fav-item">
+                          <span class="Featured-text">{{item.tag}}</span>
+                          <a href="javascript:void(0)" class="fav-icon">
+                            <i class="feather-heart"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="bloglist-content">
+                        <div class="card-body">
+                          <div class="blogfeaturelink">
+                            <div class="grid-author">
+                              <img src="{% static 'lendapp/assets/img/profiles/avatar-02.jpg' %}" alt="author">
+                            </div>
+                            <div class="blog-features">
+                              <a href="javascript:void(0)"><span> <i class="fa-regular fa-circle-stop"></i>
+                                  {{item.category}}</span></a>
+                                  
+                            </div>
+                            <div class="blog-author text-end">
+                              <span> <i class="feather-eye"></i>4000 </span>
+                            </div>
+                          </div>
+                          <h6><a href="{% url 'post-detail-page' item.id %}">{{item.title}}</a></h6>
+                          
+                          <p class="text-warning">Free for {{item.free_days}} days</p>
+                          <div class="blog-location-details">
+                            <div class="location-info">
+                              <i class="feather-map-pin"></i> {{item.location}}
+                            </div>
+                            <div class="location-info">
+                              <i class="fa-regular fa-calendar-days"></i> 06 Oct, 2022
+                            </div>
+                          </div>
+                          <div class="amount-details">
+                            <div class="amount">
+                              <span class="validrate">৳{{item.rental_charge}}</span>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              {% endfor %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include 'lendapp/footer.html' %}
+    </div>
+
+    <div class="progress-wrap active-progress">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;"></path>
+      </svg>
+    </div>
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{% static 'lendapp/assets/js/jquery-3.6.3.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/aos/aos.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/backToTop.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/feather.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/script.js' %}"></script>
+  </body>
+
+  <!-- Mirrored from listee.dreamguystech.com/html/listing-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:14:17 GMT -->
+</html>

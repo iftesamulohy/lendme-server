@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from listee.dreamguystech.com/html/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:36 GMT -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>Listee | Template</title>
+
+  <link rel="shortcut icon" href="{% static 'lendapp/assets/img/favicon.png' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/css/bootstrap.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/all.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/aos/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/css/feather.css' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/apex/apexcharts.css' %}">
+
+  <link rel="stylesheet" href="{% static 'lendapp/assets/css/style.css' %}">
+</head>
+
+<body>
+  <div class="main-wrapper innerpagebg">
+
+    {% include 'lendapp/header.html' %}
+
+
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-md-12 col-12">
+            <h2 class="breadcrumb-title">Dashboard</h2>
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="dashboard-content">
+      <div class="container">
+        {% include 'lendapp/nav.html' with status=status %}
+        <div class="dashboard-details">
+          <div class="row">
+            <div class="col-lg-3 col-md-3">
+              <div class="card dash-cards">
+                <div class="card-body">
+                  <div class="dash-top-content">
+                    <div class="dashcard-img">
+                      <img src="{% static 'lendapp/assets/img/icons/4.svg' %}" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6>Active Products</h6>
+                    <h3 class="counter">500</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+              <div class="card dash-cards">
+                <div class="card-body">
+                  <div class="dash-top-content">
+                    <div class="dashcard-img">
+                      <img src="{% static 'lendapp/assets/img/icons/1.svg' %}" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6>Total Balance</h6>
+                    <h3>1500৳</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+              <div class="card dash-cards">
+                <div class="card-body">
+                  <div class="dash-top-content">
+                    <div class="dashcard-img">
+                      <img src="{% static 'lendapp/assets/img/icons/2.svg' %}" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6>Deposit</h6>
+                    <h3>1500 ৳</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+              <div class="card dash-cards">
+                <div class="card-body">
+                  <div class="dash-top-content">
+                    <div class="dashcard-img">
+                      <img src="{% static 'lendapp/assets/img/icons/3.svg' %}" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6>Withdraw</h6>
+                    <h3>300 ৳</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row dashboard-info">
+            <div class="col-lg-6 d-flex">
+              <div class="card dash-cards w-100">
+                <div class="card-header">
+                  <h4>Page Views</h4>
+                  <div class="card-dropdown">
+                    <ul>
+                      <li class="nav-item dropdown has-arrow logged-item">
+                        <a href="#" class="dropdown-toggle pageviews-link" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <span>This week</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a class="dropdown-item" href="javascript:void();">Next Week</a>
+                          <a class="dropdown-item" href="javascript:void()">Last Month</a>
+                          <a class="dropdown-item" href="javascript:void()">Next Month</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="review-chart"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+              <div class="card dash-cards w-100">
+                <div class="card-header">
+                  <h4>Visitor Review</h4>
+                  <div class="card-dropdown">
+                    <ul>
+                      <li class="nav-item dropdown has-arrow logged-item">
+                        <a href="#" class="dropdown-toggle pageviews-link" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <span>All Listing</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a class="dropdown-item" href="javascript:void(0)">Next Week</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Last Month</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Next Month</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <ul class="review-list">
+                    <li class="review-box">
+                      <div class="review-profile">
+                        <div class="review-img">
+                          <img src="{% static 'lendapp/assets/img/profiles/avatar-11.jpg' %}" class="img-fluid" alt="img">
+                        </div>
+                      </div>
+                      <div class="review-details">
+                        <h6>Joseph</h6>
+                        <div class="rating">
+                          <div class="rating-star">
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                          </div>
+                          <div><i class="fa-sharp fa-solid fa-calendar-days"></i> 4 months ago</div>
+                          <div>by: Demo Test</div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has been the
+                          industry's standard dummy.</p>
+                      </div>
+                    </li>
+                    <li class="review-box">
+                      <div class="review-profile">
+                        <div class="review-img">
+                          <img src="{% static 'lendapp/assets/img/profiles/avatar-01.jpg' %}" class="img-fluid" alt="img">
+                        </div>
+                      </div>
+                      <div class="review-details">
+                        <h6>Dev</h6>
+                        <div class="rating">
+                          <div class="rating-star">
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                          </div>
+                          <div><i class="fa-sharp fa-solid fa-calendar-days"></i> 4 months ago</div>
+                          <div>by: Demo Test</div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has been the
+                          industry's standard dummy.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% include 'lendapp/footer.html' %}
+
+  </div>
+
+  <div class="progress-wrap active-progress">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+        style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+      </path>
+    </svg>
+  </div>
+
+
+  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="{% static 'lendapp/assets/js/jquery-3.6.3.min.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/plugins/select2/js/select2.min.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/plugins/aos/aos.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/js/backToTop.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/plugins/apex/apexcharts.min.js' %}"></script>
+  <script src="{% static 'lendapp/assets/plugins/apex/chart-data.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/js/feather.min.js' %}"></script>
+
+  <script src="{% static 'lendapp/assets/js/script.js' %}"></script>
+</body>
+
+<!-- Mirrored from listee.dreamguystech.com/html/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:39 GMT -->
+
+</html>

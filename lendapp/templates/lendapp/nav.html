@@ -1,0 +1,32 @@
+
+{% load static %}
+<div class="">
+    <ul class="dashborad-menus">
+        <li class="{% if status == 'dasboard' %}active{% endif %}">
+            <a href="{% url 'dashboard' %}">
+                <i class="feather-grid"></i> <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="{% if status == 'profile' %}active{% endif %}">
+            <a href="{% url 'profile' %}">
+                <i class="fa-solid fa-user"></i> <span>Profile</span>
+            </a>
+        </li>
+        <li class="{% if status == 'listing' %}active{% endif %}">
+            <a href="{% url 'my-listing' %}">
+                <i class="feather-list"></i> <span>My Listing</span>
+            </a>
+        </li>
+        <li class="{% if status == 'lending' %}active{% endif %}">
+            <a href="{% url 'my-lending' %}">
+                <i class="fas fa-solid fa-heart"></i> <span>My Lending</span>
+            </a>
+        </li>
+        
+        <li class="{{status}}">
+            <a href="{% url 'logout' %}">
+                <i class="fas fa-light fa-circle-arrow-left"></i> <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>

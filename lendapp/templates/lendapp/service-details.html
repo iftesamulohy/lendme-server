@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from listee.dreamguystech.com/html/service-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:06 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Listee | Template</title>
+
+    <link rel="shortcut icon" href="{% static 'lendapp/assets/img/favicon.png' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/select2/css/select2.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/aos/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/feather.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fancybox/jquery.fancybox.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/style.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper innerpagebg">
+
+        {% include 'lendapp/header.html' %}
+
+
+        <div class="bannergallery-section">
+            <div class="gallery-slider d-flex">
+                {% for image in data.product_image.all %}
+                <div class="gallery-widget">
+                    <a href="{% static 'lendapp/assets/img/gallery/gallery1/gallery-1.jpg" data-fancybox="gallery1' %}">
+                        <img class="img-fluid" alt="Image" src="{{ image.image.url }}">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <section class="details-description">
+            <div class="container">
+                <div class="about-details">
+                    <div class="about-headings">
+                        <div class="author-img">
+                            <img src="{% static 'lendapp/assets/img/profiles/avatar-10.jpg' %}" alt="authorimg">
+                        </div>
+                        <div class="authordetails">
+                            <h5>{{data.title}}</h5>
+                            <p>Rent free for {{data.free_days}} days</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="rate-details">
+                        <h2>৳{{data.rental_charge}}</h2>
+                        <p>Fixed</p>
+                    </div>
+                </div>
+                <div class="descriptionlinks">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p>Click this button to lend the product</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="callnow">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="text" value={{data.id}} name="id" hidden>
+                                <button type="submit" class="btn btn-primary"> <i class="feather-share"></i> Lend Now</a></button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="details-main-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="card ">
+                            <div class="card-header">
+                                <span class="bar-icon">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                                <h4>Description</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>{{data.description}}</p>
+                            </div>
+                        </div>
+
+                        
+
+
+                        <div class="card gallery-section ">
+                            <div class="card-header ">
+                                <img src="{% static 'lendapp/assets/img/galleryicon.svg' %}" alt="gallery">
+                                <h4>Gallery</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="gallery-content">
+                                    <div class="row">
+                                        {% for image in data.product_image.all %}
+                                        <div class="col-lg-3 col-md-3 col-sm-3">
+                                            <div class="gallery-widget">
+                                                <a href="{{ image.image.url }}"
+                                                    data-fancybox="gallery{{image.id}}">
+                                                    <img class="img-fluid" alt="Image"
+                                                        src="{{ image.image.url }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                       {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+
+                        
+
+                    </div>
+                    <div class="col-lg-3 theiaStickySidebar">
+                        <div class="rightsidebar">
+                            
+                            <div class="card">
+                                <h4><img src="{% static 'lendapp/assets/img/breifcase.svg' %}" alt=""> Contact Info</h4>
+                                <div class="map-details">
+                                    <div class="map-frame">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2238528387797!2d-122.41637708468208!3d37.78479337975754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858090475dcdc3%3A0x417fdbbd16e076ed!2s484%20Ellis%20St%2C%20San%20Francisco%2C%20CA%2094102%2C%20USA!5e0!3m2!1sen!2sin!4v1669879954211!5m2!1sen!2sin"
+                                            width="200" height="160" style="border:0;" allowfullscreen="" loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                    <ul class="info-list">
+                                        <li><i class="feather-map-pin"></i> {{data.address}}</li>
+                                        <li><i class="feather-phone-call"></i> {{data.phone_no}}</li>
+                                        <li><i class="feather-mail"></i> <a href="../cdn-cgi/l/email-protection.html"
+                                                class="__cf_email__"
+                                                data-cfemail="54272124243b262014383d272031317a373b39">{{data.email}}</a>
+                                        </li>
+                                        <li><img src="{% static 'lendapp/assets/img/website.svg' %}" alt="website"> {{data.website}}</li>
+                                        <li class="socialicons pb-0">
+                                            <a href="{{data.facebook}}" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            <a href="{{data.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                            <a href="{{data.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+                                            <a href="{{data.linkedin}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'lendapp/footer.html' %}
+
+    </div>
+
+    <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+            </path>
+        </svg>
+    </div>
+
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{% static 'lendapp/assets/js/jquery-3.6.3.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/select2/js/select2.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/aos/aos.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/feather.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/backToTop.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'lendapp/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/script.js' %}"></script>
+</body>
+
+<!-- Mirrored from listee.dreamguystech.com/html/service-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:21 GMT -->
+
+</html>

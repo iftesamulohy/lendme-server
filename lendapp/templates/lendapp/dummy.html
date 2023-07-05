@@ -1,0 +1,14 @@
+<p>image: {{item.product_image}}</p>
+                      <div>
+                        {% if item.product_image.all %}
+                          <h3>Images:</h3>
+                          <ul>
+                            {% for image in item.product_image.all %}
+                                <li><img src="{{ image.image.url }}" alt="Image"></li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                             <p>No images available</p>
+                        {% endif %}
+                      </div>
+                      <p>{{item}}</p>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from listee.dreamguystech.com/html/my-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:39 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Listee | Template</title>
+
+    <link rel="shortcut icon" href="{% static 'lendapp/assets/img/favicon.png' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/select2/css/select2.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/aos/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/plugins/datatables/datatables.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/feather.css' %}">
+
+    <link rel="stylesheet" href="{% static 'lendapp/assets/css/style.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper innerpagebg">
+
+        {% include 'lendapp/header.html' %}
+
+
+        <div class="breadcrumb-bar">
+            <div class="container">
+                <div class="row align-items-center text-center">
+                    <div class="col-md-12 col-12">
+                        <h2 class="breadcrumb-title">My Listing</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">My Listing</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dashboard-content">
+            <div class="container">
+                {% include 'lendapp/nav.html' with status=status %}
+                <div class="dash-listingcontent dashboard-info">
+                    <div class="dash-cards card">
+                        <div class="card-header">
+                            <h4>My Listings</h4>
+                            <a class="nav-link header-login add-listing" href="add-listing.html"><i
+                                    class="fa-solid fa-plus"></i> Add Listing</a>
+                        </div>
+                        <div class="card-body">
+                            
+                            <div class="table-responsive">
+                                <table class="listing-table datatable" id="listdata-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="no-sort">Image</th>
+                                            <th class="no-sort">Details</th>
+                                            <th>Status</th>
+                                            <th class="no-sort">Time Remains</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in items %}
+                                        <tr>
+                                            <td>
+                                                <div class="listingtable-img"> <a href="{% url 'post-detail-page' item.id %}"><img
+                                                            class="img-fluid avatar-img"
+                                                            src="{{item.product_image.all.0.image.url}}" alt=""></a></div>
+                                            </td>
+                                            <td>
+                                                <h6><a href="{% url 'post-detail-page' item.id %}">{{item.title}}</a></h6>
+                                                <div class="listingtable-rate"><a href="javascript:void(0)"
+                                                        class="cat-icon"><i class="fa-regular fa-circle-stop"></i>
+                                                        Electronics</a> <span
+                                                        class="discount-amt">${{item.rental_charge}}</span>
+                                                
+                                            </td>
+                                            <td><span class="status-text">{{item.status}}</span></td>
+                                            <input type="text" value={{item.id}} id="getid" hidden>
+                                            <td><Span id="countdown{{item.id}}" class="views-count"></span></td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'lendapp/footer.html' %}
+
+    </div>
+
+    <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+            </path>
+        </svg>
+    </div>
+
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{% static 'lendapp/' %}/js/jquery-3.6.3.min.js"></script>
+
+    <script src="{% static 'lendapp/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/select2/js/select2.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/aos/aos.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/backToTop.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'lendapp/assets/plugins/datatables/datatables.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/feather.min.js' %}"></script>
+
+    <script src="{% static 'lendapp/assets/js/script.js' %}"></script>
+    <script>
+        var countDownDate = new Date("July 7, 2023 00:00:00").getTime();
+        var id= document.getElementById('getid').value
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+          // Get today's date and time
+          var now = new Date().getTime();
+        
+          // Find the distance between now and the countdown date
+          var distance = countDownDate - now;
+        
+          // Time calculations for days, hours, minutes, and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+          // Create the dynamic countdown ID
+          var countdownId = "countdown"+id; // Change this value as needed
+        
+          // Display the countdown on the webpage using the dynamic ID
+          document.getElementById(countdownId).innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        
+          // If the countdown is finished, display text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById(countdownId).innerHTML = "EXPIRED";
+          }
+        }, 1000);
+	</script>
+</body>
+
+<!-- Mirrored from listee.dreamguystech.com/html/my-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Feb 2023 08:12:44 GMT -->
+
+</html>
